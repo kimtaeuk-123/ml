@@ -1,3 +1,4 @@
+#34줄에 
 import numpy as np
 import tensorflow as tf
 
@@ -27,8 +28,20 @@ scaler.fit(x_train)
 x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
 
+models = [LinearSVC(), SVC(), KNeighborsClassifier(), DecisionTreeClassifier(), RandomForestClassifier(), LogisticRegression()]
+for i in models:
+    model = i
+    model.fit(x_train, y_train) #range(len(models))안됨 fit 는 숫자를 못받는다..ㅠ??
+    print('\n',i)
+    result=model.score(x_test, y_test)
+    print('score : ', result)
+    y_pred=model.predict(x_test)
+    accuracy = accuracy_score(y_pred,y_test)
+    print('acc : ',accuracy)
 
 
+
+'''
 model.fit(x_train, y_train)
 
 y_pred = model.predict(x_test[-5:-1])
@@ -38,7 +51,7 @@ print('score : ', r2score)
 
 accuracy = accuracy_score(y_test[-5:-1], y_pred)
 print('accuracy_score : ', accuracy)
-
+'''
 # LinearSVC
 # score :  0.0
 # accuracy_score :  0.75

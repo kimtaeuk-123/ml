@@ -25,16 +25,28 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_
 
 allAlgorithms = all_estimators(type_filter = 'classifier')
 
-for (name, algorithm) in allAlgorithms:  # allAlgorithms 에서 인자가 2개 나온다 .
-    try:                                 
-        model = algorithm()
+# for (name, algorithm) in allAlgorithms:  # allAlgorithms 에서 인자가 2개 나온다 .
+#     try:                                 
+#         model = algorithm()
 
-        model.fit(x_train, y_train)
+#         model.fit(x_train, y_train)
+#         y_pred = model.predict(x_test)
+#         print(name, '의 정답률 : ', accuracy_score(y_test, y_pred))
+#     except: #예외가 발생하면 
+#         print(name, '은 없는 놈!')
+        
+
+for (name, algorithm) in allAlgorithms:
+    try:
+        model = algorithm()
+        model.fit(x_train, y_train) #, . 진짜 어떻게 찾음 ㅠㅠ
         y_pred = model.predict(x_test)
         print(name, '의 정답률 : ', accuracy_score(y_test, y_pred))
-    except: #예외가 발생하면 
-        print(name, '은 없는 놈!')
-        
+    except:
+        print(name,'은 없는 놈!')
+
+
+
 
 import sklearn
 # print(sklearn.__version__)
